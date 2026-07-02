@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#06131f">
+
+<title>Passeio de Barco em Arraial do Cabo | Arraial Vibe Turismo</title>
+<meta name="description" content="Reserve seu passeio de barco em Arraial do Cabo com a Arraial Vibe. Roteiro de 4 horas: Ilha do Farol, Prainhas do Pontal, Praia do Forno, Gruta Azul e pontos panorâmicos. Cortesias a bordo e atendimento pelo WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://arraialvibe.com.br/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Passeio de Barco em Arraial do Cabo | Arraial Vibe Turismo">
+<meta property="og:description" content="Roteiro de 4 horas por Arraial do Cabo: Ilha do Farol, Prainhas, Praia do Forno e pontos panorâmicos. Estrutura a bordo, cortesias e atendimento direto pelo WhatsApp.">
+<meta property="og:image" content="assets/img/hero-baia-arraial.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Preload hero -->
+<link rel="preload" as="image" href="assets/img/hero-baia-arraial.jpg">
+
+<!-- Libs (com typeof checks no JS; site funciona mesmo se falharem) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
+<script src="https://unpkg.com/split-type" defer></script>
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#06131f;            /* azul-marinho oceânico dominante */
+  --bg-elevated:#0a1c2c;   /* +6% pra seções/cards */
+  --surface:#0f2536;       /* mais um passo, elementos elevados */
+  --line:rgba(213,232,240,.12);
+  --line-strong:rgba(213,232,240,.22);
+
+  --text:#eef6f9;          /* branco off */
+  --muted:#9db4c2;         /* texto de apoio */
+  --faint:#6f8698;
+
+  --aqua:#25c9dd;          /* ACENTO principal (turquesa) */
+  --aqua-deep:#12a7bd;
+  --gold:#e7b25a;          /* DESTAQUE (dourado) — uso cirúrgico */
+  --wa:#25d366;            /* verde whatsapp */
+
+  --maxw:1240px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:18px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;overflow-x:hidden;
+  font-feature-settings:"ss01";
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;background:linear-gradient(135deg,var(--surface),var(--bg-elevated));}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--aqua);color:#031019}
+
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+/* ============================================================
+   LAYOUT PRIMITIVES
+   ============================================================ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{position:relative;padding-block:60px}
+@media(min-width:768px){section{padding-block:96px}}
+@media(min-width:1024px){section{padding-block:132px}}
+
+.eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--aqua);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--aqua);opacity:.7}
+
+h1,h2,h3{line-height:1.05;letter-spacing:-.02em;font-weight:800}
+h2.title{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800;margin-bottom:18px}
+h2.title .thin{font-weight:300;color:var(--muted)}
+.lead{font-size:clamp(1rem,1.5vw,1.16rem);color:var(--muted);max-width:60ch}
+.gold{color:var(--gold)}
+.aqua{color:var(--aqua)}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:inherit;font-weight:600;font-size:.98rem;cursor:pointer;
+  padding:15px 26px;border-radius:100px;border:1px solid transparent;
+  transition:transform .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
+  line-height:1;white-space:nowrap;
+}
+.btn svg{width:19px;height:19px}
+.btn-wa{background:var(--wa);color:#04210f;box-shadow:0 12px 34px -12px rgba(37,211,102,.55)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 44px -12px rgba(37,211,102,.7)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--aqua);color:var(--aqua);transform:translateY(-2px)}
+.btn-lg{padding:18px 34px;font-size:1.05rem}
+.btn-block{width:100%}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  transition:background .4s var(--ease),backdrop-filter .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);
+  border-bottom:1px solid transparent;padding:16px 0;
+}
+header.scrolled{
+  background:rgba(6,19,31,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom-color:var(--line);padding:10px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;font-size:1.12rem}
+.brand .mark{width:34px;height:34px;flex:none}
+.brand small{display:block;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.nav-links{display:none;align-items:center;gap:30px}
+.nav-links a{font-size:.92rem;color:var(--muted);font-weight:500;position:relative;transition:color .3s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--aqua);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:none}
+@media(min-width:960px){.nav-links,.nav-cta{display:flex}}
+.burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:210}
+.burger span{width:24px;height:2px;background:var(--text);transition:transform .35s var(--ease),opacity .3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:960px){.burger{display:none}}
+.mobile-menu{
+  position:fixed;inset:0;z-index:205;background:rgba(6,19,31,.97);backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 30px;
+  opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a:not(.btn){font-size:1.5rem;font-weight:700;padding:14px 0;border-bottom:1px solid var(--line);color:var(--text)}
+.mobile-menu .btn{margin-top:30px;align-self:flex-start}
+.menu-close{position:absolute;top:16px;right:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease),transform .35s var(--ease)}
+.menu-close:hover{background:var(--aqua);color:#04131a;transform:rotate(90deg)}
+.menu-close svg{width:20px;height:20px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:132px;padding-bottom:132px;position:relative}
+.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(6,19,31,.55) 0%,rgba(6,19,31,.15) 30%,rgba(6,19,31,.72) 78%,var(--bg) 100%),
+    linear-gradient(90deg,rgba(6,19,31,.6) 0%,rgba(6,19,31,0) 60%);
+}
+.hero .wrap{width:100%;position:relative;z-index:2}
+.hero-inner{max-width:820px}
+.hero h1{
+  font-size:clamp(2.15rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.03em;
+  text-shadow:0 2px 40px rgba(0,0,0,.35);margin-bottom:20px;
+}
+.hero h1 .wline{display:block;overflow:hidden}
+.hero p.sub{font-size:clamp(1.02rem,1.7vw,1.25rem);color:#dbe8ef;max-width:60ch;margin-bottom:26px;text-shadow:0 1px 20px rgba(0,0,0,.4)}
+.hero-bullets{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;
+  padding:8px 15px;border-radius:100px;border:1px solid var(--line-strong);
+  background:rgba(6,19,31,.35);backdrop-filter:blur(6px);color:#e7f1f6;
+}
+.chip svg{width:15px;height:15px;color:var(--aqua)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* price floating card */
+.price-card{
+  margin-top:30px;display:inline-flex;flex-wrap:wrap;align-items:center;gap:18px;
+  padding:16px 22px;border-radius:16px;border:1px solid var(--line-strong);
+  background:linear-gradient(135deg,rgba(15,37,54,.85),rgba(10,28,44,.7));backdrop-filter:blur(10px);
+}
+.price-card .from{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.price-card .val{font-size:2rem;font-weight:900;letter-spacing:-.03em;line-height:1}
+.price-card .val small{font-size:.9rem;font-weight:600;color:var(--muted)}
+.price-card .note{font-size:.78rem;color:var(--faint);max-width:22ch;border-left:1px solid var(--line);padding-left:16px}
+
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase}
+.scroll-hint .mouse{width:22px;height:34px;border:1.5px solid var(--line-strong);border-radius:12px;position:relative}
+.scroll-hint .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--aqua);animation:scrolldot 1.6s var(--ease) infinite}
+@keyframes scrolldot{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}80%{opacity:0;transform:translate(-50%,10px)}100%{opacity:0}}
+@media(max-width:768px){.scroll-hint{display:none}}
+
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-elevated);padding-block:0}
+.trust .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+@media(min-width:760px){.trust .wrap{grid-template-columns:repeat(5,1fr)}}
+.trust-item{display:flex;align-items:center;gap:12px;padding:22px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-item:last-child{border-right:0}
+@media(min-width:760px){.trust-item{border-bottom:0}}
+.trust-item svg{width:22px;height:22px;color:var(--aqua);flex:none;opacity:.9}
+.trust-item span{font-size:.82rem;font-weight:500;line-height:1.3;color:var(--text)}
+
+/* ============================================================
+   PROMESSA (statement) — CONTENT-001: pinned word reveal
+   ============================================================ */
+.promise{padding:0;background:var(--bg);position:relative;overflow:hidden}
+.promise::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(55% 45% at 72% 26%,rgba(37,201,221,.07),transparent 70%),
+    radial-gradient(42% 40% at 16% 84%,rgba(231,178,90,.05),transparent 70%);
+}
+.promise-stage{min-height:100svh;display:grid;place-items:center;padding:80px 22px;position:relative;z-index:1}
+.promise-inner{max-width:1000px;margin-inline:auto;text-align:center}
+.promise .eyebrow{justify-content:center;margin-bottom:28px}
+.promise .statement{
+  font-size:clamp(1.9rem,5vw,3.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.16;color:var(--text);margin:0;
+}
+.srs-unit{display:inline;opacity:.35}
+.srs-unit.g{color:var(--aqua)}
+.promise-sub{margin-top:30px;color:var(--muted);max-width:60ch;margin-inline:auto;font-size:1.02rem;opacity:.35}
+@media(prefers-reduced-motion:reduce){.srs-unit,.promise-sub{opacity:1!important}.promise-stage{min-height:auto;padding:80px 22px}}
+
+/* ============================================================
+   ROTEIRO — SB-001 horizontal scroll reveal
+   ============================================================ */
+.route{background:var(--bg-elevated);overflow:hidden}
+.route-intro{max-width:var(--maxw);margin:0 auto;padding:0 22px 44px}
+.rt-stage{position:relative}
+.rt-viewport{display:flex;align-items:center;min-height:100svh;overflow:hidden}
+.rt-track{display:flex;gap:22px;padding:0 22px;width:max-content;will-change:transform}
+.rt-card{
+  position:relative;flex:0 0 auto;width:78vw;max-width:340px;height:66vh;max-height:560px;
+  border-radius:24px;overflow:hidden;border:1px solid var(--line);
+}
+@media(min-width:640px){.rt-card{width:44vw}}
+@media(min-width:1024px){.rt-card{width:31vw;max-width:400px}}
+.rt-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.rt-card:hover img{transform:scale(1.06)}
+.rt-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,19,31,.15) 0%,rgba(6,19,31,.2) 45%,rgba(6,19,31,.92) 100%)}
+.rt-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:24px}
+.rt-body .tag{background:rgba(6,19,31,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+.rt-body .tag.stopover{color:#7fe6f2}
+.rt-body .tag.pano{color:var(--gold)}
+.rt-num{font-size:.72rem;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,.75)}
+.rt-foot h3{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.02em;color:#fff;margin:10px 0 8px;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.rt-foot p{font-size:.9rem;color:#dbe8ef;margin:0}
+.rt-time{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:600;color:#fff;margin-top:12px}
+.rt-time svg{width:15px;height:15px;color:var(--aqua)}
+.rt-progress{position:absolute;left:22px;right:22px;bottom:26px;height:2px;background:var(--line);z-index:5;border-radius:2px;overflow:hidden}
+.rt-progress span{position:absolute;inset:0;width:0;background:var(--aqua);border-radius:2px}
+.rt-hint{position:absolute;top:24px;right:24px;z-index:5;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.rt-hint svg{width:16px;height:16px}
+@media(max-width:639px){
+  .rt-card{width:80vw;height:62vh}
+  .rt-track{gap:16px}
+}
+
+/* ============================================================
+   CUSTOM CURSOR (desktop, fine pointer)
+   ============================================================ */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0}
+.cursor-dot{width:6px;height:6px;background:var(--aqua)}
+.cursor-ring{width:34px;height:34px;border:1.5px solid rgba(37,201,221,.7);transition:width .3s var(--ease),height .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease)}
+.cursor-ring.hover{width:54px;height:54px;background:rgba(37,201,221,.12);border-color:var(--aqua)}
+body.has-cursor{cursor:none}
+body.has-cursor a,body.has-cursor button,body.has-cursor .gal-item,body.has-cursor .acc-q{cursor:none}
+@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+
+/* ============================================================
+   ROTEIRO — timeline
+   ============================================================ */
+.route{background:var(--bg-elevated)}
+.route-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:52px}
+.timeline{position:relative}
+.timeline::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--aqua),var(--line));opacity:.5}
+@media(min-width:820px){.timeline::before{left:50%;transform:translateX(-1px)}}
+.stop{position:relative;padding-left:56px;margin-bottom:20px}
+@media(min-width:820px){
+  .stop{width:50%;padding-left:0;margin-bottom:4px}
+  .stop:nth-child(odd){left:0;padding-right:52px;text-align:right}
+  .stop:nth-child(even){left:50%;padding-left:52px}
+}
+.stop-dot{position:absolute;left:10px;top:26px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:2px solid var(--aqua);z-index:2;display:grid;place-items:center}
+.stop-dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--aqua)}
+@media(min-width:820px){
+  .stop:nth-child(odd) .stop-dot{left:auto;right:-10px}
+  .stop:nth-child(even) .stop-dot{left:-10px}
+}
+.stop-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.stop-card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:0 20px 50px -30px rgba(0,0,0,.7)}
+.stop-num{font-size:.72rem;font-weight:700;letter-spacing:.14em;color:var(--faint)}
+.stop-card h3{font-size:1.24rem;font-weight:700;margin:6px 0 4px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:100px;margin-bottom:12px}
+.tag.stopover{background:rgba(37,201,221,.14);color:var(--aqua)}
+.tag.pano{background:rgba(231,178,90,.14);color:var(--gold)}
+.stop-card p{font-size:.92rem;color:var(--muted);margin-bottom:0}
+.stop-time{font-size:.8rem;color:var(--text);font-weight:600;margin-top:10px;display:inline-flex;align-items:center;gap:7px}
+.stop-time svg{width:15px;height:15px;color:var(--aqua)}
+.route-note{margin-top:44px;text-align:center;font-size:.86rem;color:var(--faint)}
+.route-cta{margin-top:34px;display:flex;justify-content:center}
+
+/* ============================================================
+   INTERACTIVE CARD — cursor-reactive gradient border + glow
+   ============================================================ */
+.icard{position:relative;isolation:isolate}
+.icard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;z-index:3;pointer-events:none;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),var(--aqua) 0%,var(--gold) 38%,transparent 72%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  opacity:0;transition:opacity .35s var(--ease)}
+.icard::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:0;pointer-events:none;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(37,201,221,.15),transparent 62%);
+  opacity:0;transition:opacity .35s var(--ease)}
+.icard:hover::before,.icard:hover::after{opacity:1}
+.icard>*{position:relative;z-index:1}
+
+/* ============================================================
+   EMBARCAÇÃO — editorial split
+   ============================================================ */
+.boat-top{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;margin-bottom:8px}
+@media(min-width:900px){.boat-top{grid-template-columns:1.02fr .98fr;gap:60px}}
+.boat-intro{max-width:560px}
+.boat-highlights{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 6px}
+.boat-highlights span{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500;padding:9px 15px;border-radius:100px;border:1px solid var(--line);background:var(--bg-elevated);color:var(--text)}
+.boat-highlights span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqua);flex:none}
+.boat-portrait{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.boat-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.boat-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(6,19,31,.6))}
+.boat-portrait .cap{position:absolute;left:22px;bottom:20px;z-index:2;font-size:.82rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:9px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.boat-portrait .cap svg{width:16px;height:16px;color:var(--aqua)}
+.boat-features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+@media(min-width:640px){.boat-features{grid-template-columns:repeat(4,1fr)}}
+.feat{background:var(--bg-elevated);border:1px solid var(--line);border-radius:16px;padding:24px 20px;
+  transition:transform .4s var(--ease),border-color .4s var(--ease)}
+.feat:hover{transform:translateY(-5px)}
+.feat svg{width:26px;height:26px;color:var(--aqua);margin-bottom:14px;opacity:.9}
+.feat h4{font-size:1rem;font-weight:700;margin-bottom:5px}
+.feat p{font-size:.82rem;color:var(--muted)}
+.boat-microcopy{margin-top:30px;font-size:.86rem;color:var(--faint);display:flex;align-items:flex-start;gap:11px;max-width:78ch}
+.boat-microcopy svg{width:18px;height:18px;color:var(--aqua);flex:none;margin-top:3px}
+.boat-showcase{margin-top:54px;border-radius:24px;overflow:hidden;border:1px solid var(--line);position:relative}
+.boat-showcase img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.boat-showcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,19,31,.55))}
+.boat-showcase .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#fff;font-weight:600;font-size:1.05rem;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+
+/* ============================================================
+   CORTESIAS
+   ============================================================ */
+.courtesy{background:var(--bg-elevated)}
+.courtesy-head{text-align:center;max-width:760px;margin-inline:auto;margin-bottom:52px}
+.courtesy-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:720px){.courtesy-grid{grid-template-columns:repeat(3,1fr)}}
+.courtesy-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:38px 28px;text-align:center;
+  transition:transform .4s var(--ease),border-color .4s var(--ease)
+}
+.courtesy-card:hover{transform:translateY(-5px)}
+.courtesy-card .ic{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-strong);transition:border-color .4s var(--ease),background .4s var(--ease)}
+.courtesy-card:hover .ic{border-color:var(--aqua);background:rgba(37,201,221,.08)}
+.courtesy-card .ic svg{width:24px;height:24px;color:var(--aqua)}
+.courtesy-card h4{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.courtesy-card p{font-size:.88rem;color:var(--muted)}
+.courtesy-note{margin-top:68px;text-align:center;font-size:.85rem;color:var(--faint);max-width:64ch;margin-inline:auto;display:flex;align-items:center;justify-content:center;gap:9px}
+.courtesy-note svg{width:16px;height:16px;color:var(--gold);flex:none}
+
+/* ============================================================
+   EXPERIÊNCIA + persona chips
+   ============================================================ */
+.exp-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:900px){.exp-grid{grid-template-columns:1.05fr .95fr;gap:56px}}
+.exp-media{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.exp-media img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.persona-list{display:flex;flex-direction:column;gap:2px;margin-top:26px}
+.persona{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.persona:last-child{border-bottom:0}
+.persona svg{width:22px;height:22px;color:var(--aqua);flex:none;opacity:.9}
+.persona b{font-weight:600;font-size:1rem}
+.persona span{display:block;font-size:.84rem;color:var(--muted)}
+
+/* ============================================================
+   GALERIA
+   ============================================================ */
+.gallery{background:var(--bg-elevated)}
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px}
+@media(min-width:760px){.gal-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;border:1px solid var(--line);aspect-ratio:1}
+.gal-item.tall{aspect-ratio:1}
+@media(min-width:760px){
+  .gal-item.wide{grid-column:span 2}
+  .gal-item.tall{grid-row:span 2;aspect-ratio:auto}
+}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .5s var(--ease)}
+.gal-item:hover img{transform:scale(1.06);filter:brightness(.92)}
+.gal-item .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 14px;font-size:.78rem;font-weight:500;color:#fff;background:linear-gradient(transparent,rgba(3,12,20,.8));opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.gal-item:hover .cap{opacity:1;transform:translateY(0)}
+.gal-item .zoom{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(6,19,31,.6);backdrop-filter:blur(6px);display:grid;place-items:center;opacity:0;transition:opacity .4s var(--ease)}
+.gal-item .zoom svg{width:16px;height:16px;color:#fff}
+.gal-item:hover .zoom{opacity:1}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:400;background:rgba(3,10,17,.94);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);padding:20px}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 40px 120px -30px #000}
+.lb-close,.lb-nav{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--line-strong);color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:background .3s var(--ease),transform .3s var(--ease)}
+.lb-close:hover,.lb-nav:hover{background:var(--aqua);color:#03131a;transform:scale(1.05)}
+.lb-close{top:22px;right:22px}
+.lb-nav{top:50%;transform:translateY(-50%)}
+.lb-prev{left:22px}.lb-next{right:22px}
+.lb-nav svg,.lb-close svg{width:22px;height:22px}
+@media(max-width:640px){.lb-nav{width:42px;height:42px}.lb-prev{left:8px}.lb-next{right:8px}}
+
+/* ============================================================
+   POR QUE (diferenciais)
+   ============================================================ */
+.why-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:44px}
+@media(min-width:680px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.why-grid{grid-template-columns:repeat(3,1fr)}}
+.why-card{background:var(--bg-elevated);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:transform .4s var(--ease),border-color .4s var(--ease)}
+.why-card:hover{transform:translateY(-4px);border-color:var(--line-strong)}
+.why-card svg{width:24px;height:24px;color:var(--aqua);opacity:.85;margin-bottom:16px}
+.why-card h4{font-size:1.08rem;font-weight:700;margin-bottom:8px}
+.why-card p{font-size:.9rem;color:var(--muted)}
+
+/* ============================================================
+   COMO RESERVAR (steps)
+   ============================================================ */
+.steps{background:var(--bg)}
+.steps-flow{position:relative;margin-top:64px;display:grid;grid-template-columns:1fr;gap:34px}
+@media(min-width:900px){.steps-flow{grid-template-columns:repeat(5,1fr);gap:16px}}
+.steps-line{display:none}
+@media(min-width:900px){
+  .steps-line{display:block;position:absolute;top:41px;left:10%;right:10%;height:2px;background:var(--line);z-index:0;border-radius:2px}
+  .steps-line i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--aqua),var(--gold));border-radius:2px;box-shadow:0 0 12px rgba(37,201,221,.5)}
+}
+.stepc{position:relative;z-index:1;text-align:center;padding:0 6px}
+.step-node{width:84px;height:84px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:var(--surface);border:1px solid var(--line-strong);
+  transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease),background .45s var(--ease)}
+.step-node svg{width:30px;height:30px;color:var(--aqua);transition:transform .45s var(--ease)}
+.step-node .num{position:absolute;top:-6px;right:-2px;min-width:27px;height:27px;padding:0 7px;border-radius:100px;
+  background:var(--aqua);color:#04131a;font-weight:800;font-size:.8rem;display:grid;place-items:center;border:3px solid var(--bg)}
+.stepc:hover .step-node{transform:translateY(-6px);border-color:var(--aqua);
+  box-shadow:0 0 0 6px rgba(37,201,221,.1),0 22px 44px -18px rgba(37,201,221,.55)}
+.stepc:hover .step-node svg{transform:scale(1.12)}
+.stepc h4{font-size:1.04rem;font-weight:700;margin-bottom:8px}
+.stepc p{font-size:.86rem;color:var(--muted);max-width:26ch;margin-inline:auto}
+.steps-cta{margin-top:56px;text-align:center}
+
+/* ============================================================
+   ACCORDION (info + faq)
+   ============================================================ */
+.acc{border-top:1px solid var(--line)}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-q{width:100%;background:none;border:0;color:var(--text);font-family:inherit;text-align:left;cursor:pointer;
+  padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:clamp(1rem,2vw,1.16rem);font-weight:600}
+.acc-q:hover{color:var(--aqua)}
+.acc-icon{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.acc-icon::before,.acc-icon::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--aqua)}
+.acc-icon::before{width:14px;height:2px}
+.acc-icon::after{width:2px;height:14px;transition:transform .4s var(--ease)}
+.acc-item.open .acc-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.acc-a p{padding:0 0 24px;color:var(--muted);font-size:.96rem;max-width:74ch}
+.acc-a .confirm{display:inline-flex;align-items:center;gap:7px;margin-top:2px;font-size:.82rem;font-weight:600;color:var(--gold)}
+.acc-a .confirm svg{width:15px;height:15px}
+.info-cols{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:900px){.two-acc{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;align-items:start}}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final{position:relative;overflow:hidden;text-align:center}
+.final-bg{position:absolute;inset:0;z-index:-2}
+.final-bg img{width:100%;height:100%;object-fit:cover}
+.final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(6,19,31,.78) 45%,rgba(6,19,31,.9))}
+.final .wrap{max-width:760px}
+.final h2{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:20px}
+.final p{color:#dbe8ef;font-size:1.1rem;margin-bottom:32px}
+.final .sub{font-size:.88rem;color:var(--muted);margin-top:22px;margin-bottom:0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
+@media(min-width:900px){footer{padding-bottom:64px}}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:34px}
+@media(min-width:820px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{font-size:.9rem;color:var(--muted);max-width:38ch}
+.foot-col h5{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--faint);margin-bottom:16px;font-weight:600}
+.foot-col a,.foot-col p{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .3s var(--ease)}
+.foot-col a:hover{color:var(--aqua)}
+.foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+.foot-bottom p{font-size:.78rem;color:var(--faint)}
+.legal{font-size:.75rem!important;color:var(--faint);max-width:80ch;margin-top:18px;line-height:1.5}
+
+/* ============================================================
+   STICKY WHATSAPP (mobile) + FLOATING (desktop)
+   ============================================================ */
+.sticky-wa{
+  position:fixed;left:0;right:0;bottom:0;z-index:180;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(6,19,31,.9);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+  transform:translateY(120%);transition:transform .45s var(--ease)
+}
+.sticky-wa.show{transform:translateY(0)}
+.sticky-wa .btn{height:56px}
+@media(min-width:960px){.sticky-wa{display:none}}
+.float-wa{
+  position:fixed;right:26px;bottom:26px;z-index:180;width:60px;height:60px;border-radius:50%;
+  background:var(--wa);display:none;align-items:center;justify-content:center;
+  box-shadow:0 14px 40px -10px rgba(37,211,102,.6);transition:transform .35s var(--ease);
+}
+.float-wa:hover{transform:scale(1.08) translateY(-2px)}
+.float-wa svg{width:30px;height:30px;color:#04210f}
+.float-wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+@media(min-width:960px){.float-wa.show{display:flex}}
+
+/* mobile: large CTAs go full-width and wrap (avoid label overflow) */
+@media(max-width:560px){
+  .hero-actions{width:100%}
+  .hero-actions .btn,.steps-cta .btn,.final .btn{width:100%;white-space:normal;text-align:center;line-height:1.25}
+  .btn-lg{padding:16px 22px;font-size:1rem}
+}
+
+/* reduce motion */
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#topo" class="brand" aria-label="Arraial Vibe Turismo — início">
+      <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <circle cx="22" cy="22" r="21" stroke="var(--aqua)" stroke-width="1.5"/>
+        <path d="M22 11.5v21M22 11.5a2.4 2.4 0 100-.2M14 19h16M15 24c0 5 3.2 8 7 8s7-3 7-8" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="10" r="2.4" stroke="var(--gold)" stroke-width="1.6"/>
+      </svg>
+      <span>Arraial Vibe<small>Turismo · Arraial do Cabo</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#roteiro">Roteiro</a>
+      <a href="#embarcacao">Embarcação</a>
+      <a href="#cortesias">Incluso</a>
+      <a href="#galeria">Fotos</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#" class="btn btn-wa nav-cta" data-wa="header">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+      WhatsApp
+    </a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Fechar menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="#roteiro">Roteiro</a>
+  <a href="#embarcacao">Embarcação</a>
+  <a href="#cortesias">O que está incluso</a>
+  <a href="#galeria">Fotos reais</a>
+  <a href="#reservar">Como reservar</a>
+  <a href="#duvidas">Dúvidas frequentes</a>
+  <a href="#" class="btn btn-wa" data-wa="menu">Consultar no WhatsApp</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="topo">
+  <div class="hero-bg">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-baia-arraial.jpg" aria-label="Vídeo do passeio de barco da Arraial Vibe em Arraial do Cabo">
+      <source src="assets/video/arraial-vibe.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow">Passeio de barco em Arraial do Cabo</span>
+      <h1 class="hero-headline">Viva Arraial do Cabo pelo mar com a Arraial Vibe</h1>
+      <p class="sub">Um roteiro de 4 horas com paradas em praias paradisíacas, pontos panorâmicos icônicos, estrutura a bordo e cortesias para deixar o passeio ainda mais completo.</p>
+      <div class="hero-bullets">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4 horas de passeio</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M4 8l2-3h12l2 3M5 8v9a2 2 0 002 2h10a2 2 0 002-2V8"/></svg>Saídas todos os dias</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l4-4 5 5 9-9M21 4v6h-6"/></svg>Ilha do Farol, Prainhas &amp; Praia do Forno</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v4M16 3v4M6 11h12l-1 9H7L6 11z"/></svg>Água, refri e caipirinha de cortesia</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-wa btn-lg" data-wa="hero">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+          Consultar disponibilidade no WhatsApp
+        </a>
+        <a href="#roteiro" class="btn btn-ghost btn-lg">Ver roteiro do passeio</a>
+      </div>
+      <div class="price-card">
+        <div>
+          <div class="from">A partir de</div>
+          <div class="val">R$ 79,99 <small>/ pessoa</small></div>
+        </div>
+        <div class="note">Valor sujeito à data e disponibilidade. Confirme condições pelo WhatsApp.</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="mouse"></div>role para explorar</div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Saídas todos os dias</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Embarque na Praia dos Anjos</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Roteiro de 4 horas</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v4M16 3v4M6 11h12l-1 9H7L6 11z"/></svg><span>Cortesias a bordo</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>Atendimento pelo WhatsApp</span></div>
+  </div>
+</div>
+
+<!-- ============ PROMESSA (CONTENT-001) ============ -->
+<section class="promise" id="sobre">
+  <div class="promise-stage" id="promiseStage">
+    <div class="promise-inner">
+      <span class="eyebrow">O passeio em uma frase</span>
+      <p class="statement" id="promiseText" data-text="Um roteiro para ver Arraial do Cabo do jeito que ele merece: pelo mar. Praias de água cristalina, pontos panorâmicos famosos e cenários que parecem cartão-postal." data-accent="pelo mar."></p>
+      <p class="promise-sub">Tudo em uma única saída de 4 horas, com estrutura a bordo e a equipe da Arraial Vibe cuidando dos detalhes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROTEIRO (SB-001 horizontal) ============ -->
+<section class="route" id="roteiro">
+  <div class="route-intro">
+    <span class="eyebrow">Roteiro do passeio</span>
+    <h2 class="title">Por onde <span class="thin">você vai passar</span></h2>
+    <p class="lead">Três paradas para aproveitar e quatro pontos panorâmicos. Role para percorrer o trajeto, do embarque na Praia dos Anjos ao retorno.</p>
+  </div>
+
+  <div class="rt-stage" id="rtStage">
+    <div class="rt-viewport">
+      <div class="rt-track" id="rtTrack">
+        <article class="rt-card">
+          <img src="assets/img/roteiro/01-ilha-do-farol.jpg" alt="Ilha do Farol em Arraial do Cabo" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag stopover">◆ Parada para aproveitar</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PARADA 01</div>
+              <h3>Ilha do Farol</h3>
+              <p>Eleita entre as praias mais bonitas do Brasil. Tempo para banho de mar, contemplar o visual e registrar fotos.</p>
+              <span class="rt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Cerca de 1 hora no local</span>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/02-prainhas-do-pontal.jpg" alt="Prainhas do Pontal do Atalaia" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag stopover">◆ Parada para aproveitar</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PARADA 02</div>
+              <h3>Prainhas do Pontal do Atalaia</h3>
+              <p>Cenário clássico de Arraial, com mar claro e uma das paisagens mais procuradas por turistas.</p>
+              <span class="rt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Cerca de 30 minutos no local</span>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/03-praia-do-forno.jpg" alt="Praia do Forno em Arraial do Cabo" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag stopover">◆ Parada para aproveitar</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PARADA 03</div>
+              <h3>Praia do Forno</h3>
+              <p>Uma das praias mais conhecidas da região, de águas calmas e transparentes, acessível de barco.</p>
+              <span class="rt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Cerca de 30 minutos no local</span>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/04-fenda-de-nossa-senhora.jpg" alt="Fenda de Nossa Senhora" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag pano">◇ Ponto panorâmico</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PONTO 04</div>
+              <h3>Fenda de Nossa Senhora</h3>
+              <p>Formação natural entre as rochas, contemplada durante o trajeto. Um dos visuais mais fotografados.</p>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/05-pedra-do-macaco.jpg" alt="Pedra do Macaco" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag pano">◇ Ponto panorâmico</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PONTO 05</div>
+              <h3>Pedra do Macaco</h3>
+              <p>Formação rochosa icônica avistada ao longo do percurso, com silhueta que dá nome ao ponto.</p>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/06-gruta-azul.jpg" alt="Gruta Azul" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag pano">◇ Ponto panorâmico</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PONTO 06</div>
+              <h3>Gruta Azul</h3>
+              <p>Ponto panorâmico com o azul intenso que dá nome à embarcação. Cenário obrigatório para fotos.</p>
+            </div>
+          </div>
+        </article>
+        <article class="rt-card">
+          <img src="assets/img/roteiro/07-pedra-do-meteorito.jpg" alt="Pedra do Meteorito" loading="lazy">
+          <div class="rt-body">
+            <div class="rt-head"><span class="tag pano">◇ Ponto panorâmico</span></div>
+            <div class="rt-foot">
+              <div class="rt-num">PONTO 07</div>
+              <h3>Pedra do Meteorito</h3>
+              <p>Fechando o roteiro panorâmico, uma formação curiosa avistada do mar antes do retorno.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="rt-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>role para percorrer</div>
+    <div class="rt-progress"><span id="rtProgress"></span></div>
+  </div>
+
+  <div class="route-intro" style="padding-top:44px;text-align:center">
+    <p class="route-note" style="color:var(--faint);font-size:.86rem;margin-bottom:24px">Roteiro e paradas podem variar conforme as condições do mar e fatores operacionais. Confirme os detalhes da sua data pelo WhatsApp.</p>
+    <a href="#" class="btn btn-wa" data-wa="roteiro">Quero esse roteiro para minha data</a>
+  </div>
+</section>
+
+<!-- ============ EMBARCAÇÃO ============ -->
+<section id="embarcacao">
+  <div class="wrap">
+    <div class="boat-top">
+      <div class="boat-intro">
+        <span class="eyebrow">Conheça a embarcação</span>
+        <h2 class="title">Um barco preparado <span class="thin">para o seu passeio</span></h2>
+        <p class="lead">A Gruta Azul, embarcação da Arraial Vibe, tem dois decks, área de sol e estrutura pensada para o conforto e a segurança de toda a família durante as 4 horas de passeio.</p>
+        <div class="boat-highlights">
+          <span>Dois decks</span>
+          <span>Área de sol</span>
+          <span>Espaço para fotos</span>
+        </div>
+        <p class="boat-microcopy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+          Itens como Wi-Fi, guia de turismo, fotógrafo, barzinho a bordo e cooler são confirmados pelo WhatsApp de acordo com a data — assim você embarca sabendo exatamente o que esperar.
+        </p>
+      </div>
+      <figure class="boat-portrait" data-parallax-wrap>
+        <img data-parallax src="assets/img/barco-aereo-deck.jpg" alt="Vista aérea da embarcação Gruta Azul da Arraial Vibe com passageiros a bordo em mar turquesa" loading="lazy">
+        <span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>A Gruta Azul vista do alto</span>
+      </figure>
+    </div>
+
+    <div class="boat-features">
+      <div class="feat icard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M6 12V7a2 2 0 012-2h1M9 5a2 2 0 104 0M4 12v3a4 4 0 004 4h8a4 4 0 004-4v-3M8 19l-1 2M16 19l1 2"/></svg>
+        <h4>Banheiro a bordo</h4>
+        <p>Estrutura para toda a família durante as 4 horas de passeio.</p>
+      </div>
+      <div class="feat icard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V6l10-2v12M9 13l10-2"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+        <h4>Som ambiente</h4>
+        <p>Aquele clima leve de quem escolheu curtir Arraial pelo mar.</p>
+      </div>
+      <div class="feat icard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h4>Coletes salva-vidas</h4>
+        <p>Itens de segurança disponíveis para todos os passageiros.</p>
+      </div>
+      <div class="feat icard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15c2 0 2-1.5 4-1.5S9 15 11 15s2-1.5 4-1.5S17 15 19 15M4 11h16M7 11a5 5 0 0110 0"/></svg>
+        <h4>Macarrão flutuante</h4>
+        <p>Para relaxar na água durante as paradas para banho de mar.</p>
+      </div>
+    </div>
+
+    <figure class="boat-showcase" data-parallax-wrap>
+      <img data-parallax src="assets/img/barco-navegando.jpg" alt="Embarcação Gruta Azul navegando com passageiros no mar de Arraial do Cabo" loading="lazy">
+      <figcaption class="cap">Gruta Azul · Arraial do Cabo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CORTESIAS ============ -->
+<section class="courtesy" id="cortesias">
+  <div class="wrap">
+    <div class="courtesy-head">
+      <span class="eyebrow" style="justify-content:center">Cortesias a bordo</span>
+      <h2 class="title">Cortesias para deixar <span class="thin">o passeio mais leve</span></h2>
+      <p class="lead" style="margin-inline:auto">Durante o passeio, a Arraial Vibe oferece bebidas de cortesia para os passageiros aproveitarem o trajeto com mais tranquilidade.</p>
+    </div>
+    <div class="courtesy-grid">
+      <div class="courtesy-card icard">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2s5 6 5 10a5 5 0 01-10 0c0-4 5-10 5-10z"/></svg></div>
+        <h4>Água</h4>
+        <p>Para se manter hidratado durante as 4 horas de sol e mar.</p>
+      </div>
+      <div class="courtesy-card icard">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10l-1 5H8L7 3zM8 8h8l-1 12H9L8 8z"/><path d="M9.5 12h5"/></svg></div>
+        <h4>Refrigerante</h4>
+        <p>Aquela bebida gelada para acompanhar as paradas para banho.</p>
+      </div>
+      <div class="courtesy-card icard">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-7 8-7-8zM12 12v6M8 21h8"/></svg></div>
+        <h4>Caipirinha</h4>
+        <p>A tradicional caipirinha para brindar a experiência em alto-mar.</p>
+      </div>
+    </div>
+    <p class="courtesy-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+      As cortesias podem seguir regras de disponibilidade e consumo. Confirme os detalhes pelo WhatsApp antes de reservar.
+    </p>
+  </div>
+</section>
+
+<!-- ============ EXPERIÊNCIA ============ -->
+<section id="experiencia">
+  <div class="wrap">
+    <div class="exp-grid">
+      <div class="exp-media" data-parallax-wrap>
+        <img data-parallax src="assets/img/experiencia-popa-coracao.jpg" alt="Passageiros na popa da embarcação Gruta Azul com moldura em formato de coração e escorregador ao fundo" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">A experiência</span>
+        <h2 class="title">Mais do que os pontos turísticos, <span class="thin">é viver a vibe de Arraial</span></h2>
+        <p class="lead">O passeio combina paisagens de água cristalina, momentos para fotos, banho de mar, música ambiente e aquele clima leve de quem escolheu aproveitar Arraial do Cabo pelo melhor ângulo: o mar.</p>
+        <div class="persona-list">
+          <div class="persona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2 4 4 0 017 2c0 5.5-7 10-7 10z"/></svg><div><b>Para casais</b><span>Um cenário à altura de uma viagem a dois.</span></div></div>
+          <div class="persona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 20c0-3 2.5-5 5-5s5 2 5 5M15 20c0-2 1-3.5 3-3.5"/></svg><div><b>Para famílias</b><span>Segurança e conforto para todas as idades.</span></div></div>
+          <div class="persona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3"/><circle cx="6" cy="10" r="2"/><circle cx="18" cy="10" r="2"/><path d="M3 19c0-2.5 1.5-4 3-4M21 19c0-2.5-1.5-4-3-4M8 19c0-3 2-4.5 4-4.5s4 1.5 4 4.5"/></svg><div><b>Para grupos de amigos</b><span>O passeio perfeito para curtir junto.</span></div></div>
+          <div class="persona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2h5L16 7M12 16a3 3 0 100-6 3 3 0 000 6z"/></svg><div><b>Para fotos incríveis</b><span>Escorregador, moldura de coração e cenários cartão-postal.</span></div></div>
+        </div>
+        <div style="margin-top:30px"><a href="#" class="btn btn-wa" data-wa="experiencia">Quero viver essa experiência</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIA ============ -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <span class="eyebrow">Fotos reais</span>
+    <h2 class="title">Momentos reais <span class="thin">da Arraial Vibe</span></h2>
+    <p class="lead">Sem banco de imagens: essas são fotos da nossa própria embarcação, do mar de Arraial e de quem já embarcou com a gente.</p>
+
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-item wide" data-full="assets/img/barco-navegando.jpg"><img src="assets/img/barco-navegando.jpg" alt="Embarcação Gruta Azul navegando com passageiros no mar de Arraial do Cabo" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A Gruta Azul navegando por Arraial</span></div>
+      <div class="gal-item tall" data-full="assets/img/experiencia-toboaga.jpg"><img src="assets/img/experiencia-toboaga.jpg" alt="Escorregador da embarcação com passageiros no deck superior" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Escorregador e deck superior</span></div>
+      <div class="gal-item" data-full="assets/img/barco-proa-cais.jpg"><img src="assets/img/barco-proa-cais.jpg" alt="Proa da embarcação Gruta Azul atracada no cais da Praia dos Anjos" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Embarque na Praia dos Anjos</span></div>
+      <div class="gal-item" data-full="assets/img/a-bordo-mar.jpg"><img src="assets/img/a-bordo-mar.jpg" alt="Vista do mar aberto a bordo da embarcação" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A bordo, com o mar aberto</span></div>
+      <div class="gal-item" data-full="assets/img/barco-lateral.jpg"><img src="assets/img/barco-lateral.jpg" alt="Vista lateral da embarcação Gruta Azul no mar de Arraial" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A embarcação por inteiro</span></div>
+      <div class="gal-item" data-full="assets/img/gruta-azul-detalhe.jpg"><img src="assets/img/gruta-azul-detalhe.jpg" alt="Detalhe da proa da Gruta Azul com passageiros" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Detalhes da Gruta Azul</span></div>
+      <div class="gal-item wide" data-full="assets/img/hero-baia-arraial.jpg"><img src="assets/img/hero-baia-arraial.jpg" alt="Vista aérea da baía turquesa de Arraial do Cabo" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">O paraíso visto de cima</span></div>
+      <div class="gal-item" data-full="assets/img/grupo-interno.jpg"><img src="assets/img/grupo-interno.jpg" alt="Grupo de passageiros a bordo da embarcação" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Momentos a bordo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE ============ -->
+<section id="porque">
+  <div class="wrap">
+    <span class="eyebrow">Por que a Arraial Vibe</span>
+    <h2 class="title">Você sabe antes de embarcar <span class="thin">o que vai encontrar</span></h2>
+    <p class="lead">Aqui a gente mostra o roteiro, a estrutura, os pontos visitados e as cortesias — e deixa um canal direto para tirar dúvidas antes de fechar sua data.</p>
+    <div class="why-grid">
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h4>Roteiro completo de 4 horas</h4><p>Ilha do Farol, Prainhas, Praia do Forno e pontos panorâmicos em uma única saída.</p></div>
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18l3-8h12l3 8M5 18h14M8 10V7a4 4 0 018 0v3"/></svg><h4>Barco real com estrutura</h4><p>Embarcação com dois decks, banheiro, som ambiente e itens de segurança.</p></div>
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v4M16 3v4M6 11h12l-1 9H7L6 11z"/></svg><h4>Cortesias a bordo</h4><p>Água, refrigerante e caipirinha para deixar o passeio mais leve.</p></div>
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><h4>Atendimento direto com o Diego</h4><p>Nada de agência genérica: você fala direto com quem opera o passeio.</p></div>
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2h5L16 7M12 16a3 3 0 100-6 3 3 0 000 6z"/></svg><h4>Fotos reais da experiência</h4><p>Você vê exatamente a embarcação e o mar antes de reservar.</p></div>
+      <div class="why-card icard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><h4>Saídas todos os dias</h4><p>Flexibilidade para encaixar o passeio na sua viagem a Arraial.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO RESERVAR ============ -->
+<section class="steps" id="reservar">
+  <div class="wrap">
+    <span class="eyebrow">Como funciona para reservar</span>
+    <h2 class="title">Reservar é simples <span class="thin">e rápido</span></h2>
+    <div class="steps-flow" id="stepsFlow">
+      <div class="steps-line"><i id="stepsProgress"></i></div>
+      <div class="stepc">
+        <div class="step-node"><span class="num">1</span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+        </div>
+        <h4>Chame no WhatsApp</h4><p>Toque no botão e inicie a conversa com a nossa equipe.</p>
+      </div>
+      <div class="stepc">
+        <div class="step-node"><span class="num">2</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <h4>Informe sua data</h4><p>Diga a data desejada e quantas pessoas vão embarcar.</p>
+      </div>
+      <div class="stepc">
+        <div class="step-node"><span class="num">3</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+        </div>
+        <h4>Confirme os detalhes</h4><p>Valores, horário de saída e disponibilidade para o seu dia.</p>
+      </div>
+      <div class="stepc">
+        <div class="step-node"><span class="num">4</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <h4>Receba as orientações</h4><p>Ponto de encontro, horário de chegada e o que levar.</p>
+      </div>
+      <div class="stepc">
+        <div class="step-node"><span class="num">5</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18l3-8h12l3 8M5 18h14M8 10V7a4 4 0 018 0v3"/></svg>
+        </div>
+        <h4>Embarque e aproveite</h4><p>Chegue no horário combinado e viva Arraial pelo mar.</p>
+      </div>
+    </div>
+    <div class="steps-cta">
+      <a href="#" class="btn btn-wa btn-lg" data-wa="reservar">Falar com o Diego no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFORMAÇÕES IMPORTANTES ============ -->
+<section id="informacoes">
+  <div class="wrap">
+    <span class="eyebrow">Antes de embarcar</span>
+    <h2 class="title">Informações importantes</h2>
+    <p class="lead">Sem juridiquês: o essencial para você reservar com tranquilidade. Como algumas condições variam por data e clima, o que ainda depende de confirmação está sinalizado — é só alinhar pelo WhatsApp.</p>
+    <div class="two-acc" style="margin-top:40px">
+      <div class="acc">
+        <div class="acc-item"><button class="acc-q">Chuva e condições do mar<span class="acc-icon"></span></button><div class="acc-a"><p>As saídas, o roteiro e as paradas podem depender das condições do mar e do clima no dia. Em caso de tempo instável, a equipe orienta sobre remarcação ou alternativas.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme a política da sua data pelo WhatsApp.</span></p></div></div>
+        <div class="acc-item"><button class="acc-q">Cancelamento e remarcação<span class="acc-icon"></span></button><div class="acc-a"><p>As regras de cancelamento e remarcação são combinadas no momento da reserva.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme prazos e condições pelo WhatsApp.</span></p></div></div>
+        <div class="acc-item"><button class="acc-q">Horário de saída e chegada<span class="acc-icon"></span></button><div class="acc-a"><p>Recomendamos chegar com antecedência ao ponto de embarque. O horário exato de saída e a tolerância de chegada são informados na confirmação da reserva.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme o horário do seu passeio pelo WhatsApp.</span></p></div></div>
+        <div class="acc-item"><button class="acc-q">Taxa de embarque e taxas extras<span class="acc-icon"></span></button><div class="acc-a"><p>Podem existir taxas municipais ou de acesso não inclusas no valor do passeio.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme se há taxa de embarque para a sua data.</span></p></div></div>
+      </div>
+      <div class="acc">
+        <div class="acc-item"><button class="acc-q">O que levar para o passeio<span class="acc-icon"></span></button><div class="acc-a"><p>Recomendamos protetor solar, roupa de banho, toalha, uma muda de roupa seca, boné e documento com foto. Câmera ou celular para registrar os melhores momentos também são bem-vindos.</p></div></div>
+        <div class="acc-item"><button class="acc-q">Crianças e documentos<span class="acc-icon"></span></button><div class="acc-a"><p>O passeio tem apelo para toda a família. Regras específicas para crianças, valores e documentos necessários no embarque são alinhados na reserva.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme regras e valores para crianças pelo WhatsApp.</span></p></div></div>
+        <div class="acc-item"><button class="acc-q">Cooler e bebidas próprias<span class="acc-icon"></span></button><div class="acc-a"><p>Além das cortesias de água, refrigerante e caipirinha, as regras sobre levar cooler, isopor ou bebidas próprias variam.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme a regra de cooler antes de embarcar.</span></p></div></div>
+        <div class="acc-item"><button class="acc-q">Formas de pagamento<span class="acc-icon"></span></button><div class="acc-a"><p>As formas de pagamento aceitas (Pix, cartão, dinheiro) e eventuais condições são informadas no atendimento.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme as formas de pagamento pelo WhatsApp.</span></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="courtesy" id="duvidas">
+  <div class="wrap" style="max-width:860px">
+    <span class="eyebrow">Dúvidas frequentes</span>
+    <h2 class="title">Perguntas que a gente <span class="thin">mais recebe</span></h2>
+    <div class="acc" style="margin-top:36px">
+      <div class="acc-item"><button class="acc-q">Qual a duração do passeio?<span class="acc-icon"></span></button><div class="acc-a"><p>O passeio informado pela Arraial Vibe tem duração de aproximadamente 4 horas, com paradas para banho e pontos panorâmicos ao longo do trajeto.</p></div></div>
+      <div class="acc-item"><button class="acc-q">Quais pontos o passeio visita?<span class="acc-icon"></span></button><div class="acc-a"><p>O roteiro inclui paradas na Ilha do Farol, nas Prainhas do Pontal do Atalaia e na Praia do Forno, além de pontos panorâmicos como Fenda de Nossa Senhora, Pedra do Macaco, Gruta Azul e Pedra do Meteorito. As paradas podem variar conforme as condições do mar.</p></div></div>
+      <div class="acc-item"><button class="acc-q">O passeio sai todos os dias?<span class="acc-icon"></span></button><div class="acc-a"><p>Sim, há saídas todos os dias. A disponibilidade para a sua data específica é confirmada pelo WhatsApp.</p></div></div>
+      <div class="acc-item"><button class="acc-q">O que está incluso?<span class="acc-icon"></span></button><div class="acc-a"><p>A embarcação possui banheiro, som ambiente, coletes salva-vidas e macarrão flutuante. Também há cortesia de água, refrigerante e caipirinha. Itens adicionais são confirmados no atendimento.</p></div></div>
+      <div class="acc-item"><button class="acc-q">Tem banheiro e colete salva-vidas no barco?<span class="acc-icon"></span></button><div class="acc-a"><p>Sim. A embarcação conta com banheiro a bordo e coletes salva-vidas disponíveis para os passageiros.</p></div></div>
+      <div class="acc-item"><button class="acc-q">Criança paga? Tem taxa de embarque?<span class="acc-icon"></span></button><div class="acc-a"><p>As regras e valores para crianças, assim como a existência de taxa de embarque, dependem da data e da operação.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme valores e taxas pelo WhatsApp.</span></p></div></div>
+      <div class="acc-item"><button class="acc-q">O que acontece se chover?<span class="acc-icon"></span></button><div class="acc-a"><p>As condições de saída podem depender do clima e do mar. Em caso de tempo instável, a equipe orienta sobre as alternativas para a sua data.<br><span class="confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Confirme a política de chuva pelo WhatsApp.</span></p></div></div>
+      <div class="acc-item"><button class="acc-q">Onde é o embarque?<span class="acc-icon"></span></button><div class="acc-a"><p>O endereço informado é Praça Daniel Barreto, 2 — Praia dos Anjos, Arraial do Cabo/RJ, com embarque no cais da Praia dos Anjos. Confirme pelo WhatsApp o ponto exato de encontro e o horário do seu passeio.</p></div></div>
+      <div class="acc-item"><button class="acc-q">Como faço para reservar?<span class="acc-icon"></span></button><div class="acc-a"><p>É só chamar no WhatsApp, informar a data e a quantidade de pessoas. A equipe confirma valores, horário e disponibilidade e envia as orientações para o embarque.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="reservar-final">
+  <div class="final-bg"><img src="assets/img/barco-lateral.jpg" alt="Embarcação Gruta Azul no mar de Arraial do Cabo ao entardecer"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center">Sua data está te esperando</span>
+    <h2>Pronto para viver Arraial do Cabo pelo mar?</h2>
+    <p>Fale agora com a Arraial Vibe, consulte a disponibilidade para a sua data e receba as orientações para reservar o seu passeio.</p>
+    <a href="#" class="btn btn-wa btn-lg" data-wa="final">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+      Consultar disponibilidade no WhatsApp
+    </a>
+    <p class="sub">Atendimento direto com o Diego · +55 22 99912-2511</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#topo" class="brand">
+          <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <circle cx="22" cy="22" r="21" stroke="var(--aqua)" stroke-width="1.5"/>
+            <path d="M22 11.5v21M14 19h16M15 24c0 5 3.2 8 7 8s7-3 7-8" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="10" r="2.4" stroke="var(--gold)" stroke-width="1.6"/>
+          </svg>
+          <span>Arraial Vibe<small>Turismo · Arraial do Cabo</small></span>
+        </a>
+        <p>Passeio de barco em Arraial do Cabo com roteiro completo, embarcação real e atendimento direto pelo WhatsApp.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <a href="#roteiro">Roteiro</a>
+        <a href="#embarcacao">Embarcação</a>
+        <a href="#cortesias">O que está incluso</a>
+        <a href="#galeria">Fotos reais</a>
+        <a href="#duvidas">Dúvidas frequentes</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="#" data-wa="footer">WhatsApp: +55 22 99912-2511</a>
+        <a href="https://instagram.com/arraialvibe" target="_blank" rel="noopener" data-ig>Instagram: @arraialvibe</a>
+        <p>Praça Daniel Barreto, 2 — Praia dos Anjos, Arraial do Cabo/RJ, 28930-000</p>
+        <p>CNPJ: 54.495.282/0001-74</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year">2026</span> Arraial Vibe Turismo. Todos os direitos reservados.</p>
+      <p>Feito para quem quer viver Arraial pelo mar.</p>
+    </div>
+    <p class="legal">Informações, valores, roteiro, cortesias e condições sujeitos à confirmação e disponibilidade pelo WhatsApp. As paradas e o roteiro podem variar conforme as condições do mar e fatores operacionais. Imagens da própria embarcação e da região de Arraial do Cabo.</p>
+  </div>
+</footer>
+
+<!-- ============ STICKY / FLOAT WHATSAPP ============ -->
+<div class="sticky-wa" id="stickyWa">
+  <a href="#" class="btn btn-wa btn-block" data-wa="sticky">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+    Reservar pelo WhatsApp
+  </a>
+</div>
+<a href="#" class="float-wa" id="floatWa" data-wa="float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.6-1.6-.9-2.1-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.2-1.4A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+</a>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galeria de fotos">
+  <button class="lb-close" id="lbClose" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <img id="lbImg" src="" alt="Foto ampliada do passeio da Arraial Vibe">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["TravelAgency","LocalBusiness"],
+      "@id":"https://arraialvibe.com.br/#business",
+      "name":"Arraial Vibe Turismo",
+      "description":"Passeio de barco em Arraial do Cabo com roteiro de 4 horas por Ilha do Farol, Prainhas do Pontal, Praia do Forno e pontos panorâmicos.",
+      "image":"https://arraialvibe.com.br/assets/img/hero-baia-arraial.jpg",
+      "telephone":"+5522999122511",
+      "url":"https://arraialvibe.com.br/",
+      "priceRange":"$$",
+      "address":{"@type":"PostalAddress","streetAddress":"Praça Daniel Barreto, 2 - Praia dos Anjos","addressLocality":"Arraial do Cabo","addressRegion":"RJ","postalCode":"28930-000","addressCountry":"BR"},
+      "sameAs":["https://instagram.com/arraialvibe"]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"Qual a duração do passeio?","acceptedAnswer":{"@type":"Answer","text":"O passeio tem duração de aproximadamente 4 horas, com paradas para banho e pontos panorâmicos."}},
+        {"@type":"Question","name":"Quais pontos o passeio visita?","acceptedAnswer":{"@type":"Answer","text":"Ilha do Farol, Prainhas do Pontal do Atalaia e Praia do Forno, além de pontos panorâmicos como Fenda de Nossa Senhora, Pedra do Macaco, Gruta Azul e Pedra do Meteorito."}},
+        {"@type":"Question","name":"O passeio sai todos os dias?","acceptedAnswer":{"@type":"Answer","text":"Sim, há saídas todos os dias. A disponibilidade para a data é confirmada pelo WhatsApp."}},
+        {"@type":"Question","name":"O que está incluso?","acceptedAnswer":{"@type":"Answer","text":"Banheiro, som ambiente, coletes salva-vidas e macarrão flutuante na embarcação, além de cortesia de água, refrigerante e caipirinha."}},
+        {"@type":"Question","name":"Onde é o embarque?","acceptedAnswer":{"@type":"Answer","text":"Na Praça Daniel Barreto, 2 - Praia dos Anjos, Arraial do Cabo/RJ, com embarque no cais da Praia dos Anjos. O ponto exato é confirmado pelo WhatsApp."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- ============ SCRIPT ============ -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  'use strict';
+  var isMobile = window.matchMedia('(max-width:768px)').matches || 'ontouchstart' in window;
+
+  // ---- WhatsApp links (contextual) ----
+  var WA = 'https://wa.me/5522999122511';
+  var msgs = {
+    header:'Olá! Vim pela landing page da Arraial Vibe e quero saber disponibilidade para o passeio de barco.',
+    hero:'Olá! Vim pela landing page da Arraial Vibe e quero consultar disponibilidade e valores para o passeio de barco.',
+    menu:'Olá! Vim pela landing page da Arraial Vibe e quero saber disponibilidade para o passeio de barco.',
+    roteiro:'Olá! Gostei do roteiro (Ilha do Farol, Prainhas, Praia do Forno) e quero consultar disponibilidade para a minha data.',
+    experiencia:'Olá! Quero viver a experiência do passeio da Arraial Vibe. Pode me passar disponibilidade e valores?',
+    reservar:'Olá, Diego! Quero reservar o passeio de barco da Arraial Vibe. Pode me ajudar com data e valores?',
+    final:'Olá! Quero reservar o passeio de barco da Arraial Vibe e consultar disponibilidade para a minha data.',
+    sticky:'Olá! Vim pela landing page da Arraial Vibe e quero reservar o passeio de barco.',
+    float:'Olá! Vim pela landing page da Arraial Vibe e quero tirar dúvidas sobre o passeio de barco.',
+    footer:'Olá! Vim pela landing page da Arraial Vibe e quero saber disponibilidade para o passeio de barco.'
+  };
+  function pushEvent(name){ try{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:name}); }catch(e){} }
+  document.querySelectorAll('[data-wa]').forEach(function(el){
+    var key = el.getAttribute('data-wa');
+    var txt = msgs[key] || msgs.header;
+    el.setAttribute('href', WA + '?text=' + encodeURIComponent(txt));
+    el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
+    el.addEventListener('click', function(){ pushEvent('click_whatsapp_' + key); });
+  });
+  var ig=document.querySelector('[data-ig]'); if(ig){ ig.addEventListener('click',function(){pushEvent('click_instagram');}); }
+
+  // ---- Year ----
+  var y=document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
+
+  // ---- Header scroll state ----
+  var header=document.getElementById('header');
+  var sticky=document.getElementById('stickyWa');
+  var floatWa=document.getElementById('floatWa');
+  function onScroll(){
+    var sy=window.pageYOffset||document.documentElement.scrollTop;
+    header.classList.toggle('scrolled', sy>40);
+    var show = sy>600;
+    sticky.classList.toggle('show', show);
+    floatWa.classList.toggle('show', show);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // ---- Mobile menu ----
+  var burger=document.getElementById('burger'), mm=document.getElementById('mobileMenu');
+  function closeMenu(){ burger.classList.remove('open'); mm.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burger.addEventListener('click', function(){
+    var open=burger.classList.toggle('open'); mm.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open?'true':'false');
+    document.body.style.overflow = open?'hidden':'';
+  });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  var menuClose=document.getElementById('menuClose'); if(menuClose){ menuClose.addEventListener('click', closeMenu); }
+
+  // ---- Accordions ----
+  document.querySelectorAll('.acc-item').forEach(function(item){
+    var q=item.querySelector('.acc-q'), a=item.querySelector('.acc-a');
+    q.addEventListener('click', function(){
+      var open=item.classList.contains('open');
+      // close siblings within same .acc
+      var parent=item.closest('.acc');
+      if(parent){ parent.querySelectorAll('.acc-item.open').forEach(function(o){ if(o!==item){ o.classList.remove('open'); o.querySelector('.acc-a').style.maxHeight=null; } }); }
+      if(open){ item.classList.remove('open'); a.style.maxHeight=null; }
+      else{ item.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; }
+    });
+  });
+
+  // ---- Lightbox ----
+  var items=[].slice.call(document.querySelectorAll('.gal-item'));
+  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg');
+  var idx=0;
+  function openLb(i){ idx=i; lbImg.src=items[i].getAttribute('data-full'); lb.classList.add('open'); document.body.style.overflow='hidden'; pushEvent('view_galeria'); }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  function nav(d){ idx=(idx+d+items.length)%items.length; lbImg.src=items[idx].getAttribute('data-full'); }
+  items.forEach(function(it,i){ it.addEventListener('click', function(){ openLb(i); }); });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function(e){e.stopPropagation();nav(-1);});
+  document.getElementById('lbNext').addEventListener('click', function(e){e.stopPropagation();nav(1);});
+  lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLb(); if(e.key==='ArrowRight') nav(1); if(e.key==='ArrowLeft') nav(-1);
+  });
+
+  // ---- Section-in-view events (GA4 micro-conversions) ----
+  if('IntersectionObserver' in window){
+    var evMap={roteiro:'view_roteiro',duvidas:'view_faq'};
+    var fired={};
+    var secObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ var id=en.target.id; if(evMap[id]&&!fired[id]){ fired[id]=true; pushEvent(evMap[id]); } }
+      });
+    },{threshold:.4});
+    ['roteiro','duvidas'].forEach(function(id){ var el=document.getElementById(id); if(el) secObs.observe(el); });
+  }
+
+  // ---- Hero video: ensure autoplay (muted) + pause when off-screen ----
+  var hv=document.getElementById('heroVideo');
+  if(hv){
+    var tryPlay=function(){ var p=hv.play(); if(p&&p.catch){ p.catch(function(){}); } };
+    hv.addEventListener('canplay', tryPlay); tryPlay();
+    if('IntersectionObserver' in window){
+      var hvObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ tryPlay(); } else { hv.pause(); } });
+      },{threshold:.1});
+      hvObs.observe(hv);
+    }
+  }
+
+  // ---- Custom cursor (desktop fine-pointer only) ----
+  var finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(finePointer && !isMobile){
+    var dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
+    document.body.classList.add('has-cursor');
+    var rx=window.innerWidth/2, ry=window.innerHeight/2, dx=rx, dy=ry;
+    var seen=false;
+    window.addEventListener('mousemove', function(e){
+      dx=e.clientX; dy=e.clientY;
+      dot.style.left=dx+'px'; dot.style.top=dy+'px';
+      if(!seen){ seen=true; dot.style.opacity=1; ring.style.opacity=1; }
+    });
+    (function ringLoop(){
+      rx+=(dx-rx)*0.18; ry+=(dy-ry)*0.18;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(ringLoop);
+    })();
+    document.querySelectorAll('a,button,.gal-item,.acc-q,.rt-card').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('hover'); });
+    });
+    window.addEventListener('mouseout', function(e){ if(!e.relatedTarget){ dot.style.opacity=0; ring.style.opacity=0; seen=false; } });
+  }
+
+  // ---- Cursor-reactive gradient-border cards ----
+  if(finePointer && !isMobile){
+    document.querySelectorAll('.icard').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r=card.getBoundingClientRect();
+        card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+        card.style.setProperty('--my',(e.clientY-r.top)+'px');
+      });
+    });
+  }
+
+  // ======================================================
+  // ANIMATION (all libs guarded with typeof)
+  // ======================================================
+  if(typeof gsap!=='undefined' && typeof ScrollTrigger!=='undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  // Lenis (desktop only, if loaded)
+  if(typeof Lenis!=='undefined' && !isMobile){
+    try{
+      var lenis=new Lenis({lerp:0.075,wheelMultiplier:0.95,smoothWheel:true,syncTouch:false});
+      if(typeof gsap!=='undefined' && typeof ScrollTrigger!=='undefined'){
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+      }
+    }catch(e){}
+  }
+
+  if(typeof gsap!=='undefined'){
+    // Hero kinetic headline (SplitType if available)
+    var hh=document.querySelector('.hero-headline');
+    if(hh && typeof SplitType!=='undefined'){
+      try{
+        var split=new SplitType(hh,{types:'words'});
+        gsap.from(split.words,{opacity:0,y:34,duration:1.1,stagger:.07,ease:'cubic-bezier(0.22,1,0.36,1)',delay:.15});
+      }catch(e){ gsap.from(hh,{opacity:0,y:30,duration:1}); }
+    } else if(hh){
+      gsap.from(hh,{opacity:0,y:30,duration:1});
+    }
+    // Hero rest
+    gsap.from('.hero .eyebrow',{opacity:0,y:20,duration:.8,delay:.1});
+    gsap.from('.hero .sub',{opacity:0,y:22,duration:.8,delay:.35});
+    gsap.from('.hero .chip',{opacity:0,y:18,duration:.6,stagger:.08,delay:.5});
+    gsap.from('.hero-actions',{opacity:0,y:20,duration:.8,delay:.7});
+    gsap.from('.price-card',{opacity:0,y:20,duration:.8,delay:.85});
+
+    if(typeof ScrollTrigger!=='undefined'){
+      // Staggered reveals per section
+      gsap.utils.toArray('section').forEach(function(sec){
+        if(sec.classList.contains('hero')) return;
+        var items=sec.querySelectorAll('.eyebrow, .lead, .feat, .courtesy-card, .why-card, .stepc, .gal-item, .persona, .boat-highlights, .acc-item, .trust-item');
+        if(!items.length) return;
+        gsap.from(items,{opacity:0,y:40,duration:.8,stagger:.06,ease:'cubic-bezier(0.22,1,0.36,1)',
+          scrollTrigger:{trigger:sec,start:'top 78%',toggleActions:'play none none none'}});
+      });
+
+      // Section headline kinetic
+      if(typeof SplitType!=='undefined'){
+        gsap.utils.toArray('h2.title').forEach(function(el){
+          try{
+            var s=new SplitType(el,{types:'words'});
+            gsap.from(s.words,{opacity:0,y:26,duration:.7,stagger:.05,ease:'cubic-bezier(0.22,1,0.36,1)',
+              scrollTrigger:{trigger:el,start:'top 86%'}});
+          }catch(e){}
+        });
+      }
+
+      // Parallax (desktop only) on tagged images — the cinematic touch
+      if(!isMobile){
+        gsap.utils.toArray('[data-parallax]').forEach(function(img){
+          gsap.set(img,{scale:1.14});
+          gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
+            scrollTrigger:{trigger:img.closest('[data-parallax-wrap]')||img,start:'top bottom',end:'bottom top',scrub:true}});
+        });
+      }
+
+      // ---- Steps: progress line fills as section scrolls (desktop) ----
+      var sProg=document.getElementById('stepsProgress'), sFlow=document.getElementById('stepsFlow');
+      if(sProg && sFlow && !isMobile){
+        gsap.fromTo(sProg,{width:'0%'},{width:'100%',ease:'none',
+          scrollTrigger:{trigger:sFlow,start:'top 68%',end:'bottom 62%',scrub:true}});
+      }
+
+      // ---- CONTENT-001: pinned brand statement, words 35%->100% on scroll ----
+      var pText=document.getElementById('promiseText');
+      if(pText){
+        var raw=pText.getAttribute('data-text')||pText.textContent||'';
+        var accent=(pText.getAttribute('data-accent')||'').split(' ').filter(Boolean);
+        pText.setAttribute('aria-label',raw);
+        pText.innerHTML=raw.split(' ').filter(Boolean).map(function(w){
+          var cls='srs-unit'+(accent.indexOf(w)>-1?' g':'');
+          return '<span class="'+cls+'" aria-hidden="true">'+w+' </span>';
+        }).join('');
+        var pUnits=gsap.utils.toArray('#promiseText .srs-unit');
+        var pSub=document.querySelector('.promise-sub');
+        gsap.set(pUnits,{opacity:.35});
+        var pTl=gsap.timeline({scrollTrigger:{trigger:'#sobre',start:'top top',end:'+=160%',scrub:true,pin:'#promiseStage',anticipatePin:1,invalidateOnRefresh:true}});
+        pTl.to(pUnits,{opacity:1,ease:'none',stagger:{each:1}});
+        if(pSub){ pTl.to(pSub,{opacity:1,ease:'none'},'>-0.5'); }
+      }
+
+      // ---- SB-001: horizontal scroll reveal for roteiro (desktop/tablet) ----
+      var rtTrack=document.getElementById('rtTrack');
+      var rtStage=document.getElementById('rtStage');
+      if(rtTrack && rtStage && typeof gsap.matchMedia==='function'){
+        var rtCards=gsap.utils.toArray('#rtTrack .rt-card');
+        var rtBar=document.getElementById('rtProgress');
+        var rmm=gsap.matchMedia();
+        rmm.add('all', function(){
+          var distance=function(){ return rtTrack.scrollWidth - window.innerWidth; };
+          var tween=gsap.to(rtTrack,{x:function(){return -distance();},ease:'none',
+            scrollTrigger:{trigger:rtStage,start:'top top',end:function(){return '+='+distance();},
+              scrub:1,pin:true,anticipatePin:1,invalidateOnRefresh:true,
+              onUpdate:function(self){ if(rtBar){ rtBar.style.width=(self.progress*100)+'%'; } }}});
+          rtCards.forEach(function(card){
+            gsap.from(card,{opacity:0,y:30,duration:.4,ease:'power2.out',
+              scrollTrigger:{trigger:card,containerAnimation:tween,start:'left 92%',toggleActions:'play none none reverse'}});
+          });
+        });
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
