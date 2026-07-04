@@ -128,7 +128,7 @@ header.scrolled{
 }
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;font-size:1.12rem}
-.brand .mark{width:34px;height:34px;flex:none}
+.brand-logo{height:38px;width:auto;flex:none;display:block;background:none;filter:drop-shadow(0 1px 4px rgba(3,16,25,.45))}
 .brand small{display:block;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:2px}
 .nav-links{display:none;align-items:center;gap:30px}
 .nav-links a{font-size:.92rem;color:var(--muted);font-weight:500;position:relative;transition:color .3s var(--ease)}
@@ -502,6 +502,7 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
 .foot-grid{display:grid;grid-template-columns:1fr;gap:34px}
 @media(min-width:820px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
 .foot-brand .brand{margin-bottom:16px}
+.foot-brand .brand-logo{height:52px}
 .foot-brand p{font-size:.9rem;color:var(--muted);max-width:38ch}
 .foot-col h5{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--faint);margin-bottom:16px;font-weight:600}
 .foot-col a,.foot-col p{display:block;font-size:.9rem;color:var(--muted);margin-bottom:10px;transition:color .3s var(--ease)}
@@ -549,12 +550,7 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
 <header id="header">
   <div class="wrap nav">
     <a href="#topo" class="brand" aria-label="Arraial Vibe Turismo — início">
-      <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <circle cx="22" cy="22" r="21" stroke="var(--aqua)" stroke-width="1.5"/>
-        <path d="M22 11.5v21M22 11.5a2.4 2.4 0 100-.2M14 19h16M15 24c0 5 3.2 8 7 8s7-3 7-8" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="22" cy="10" r="2.4" stroke="var(--gold)" stroke-width="1.6"/>
-      </svg>
-      <span>Arraial Vibe<small>Turismo · Arraial do Cabo</small></span>
+      <img class="brand-logo" src="assets/brand/logo-branco.svg" alt="" width="97" height="38" fetchpriority="high">
     </a>
     <nav class="nav-links" aria-label="Principal">
       <a href="#roteiro">Roteiro</a>
@@ -996,13 +992,8 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#topo" class="brand">
-          <svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <circle cx="22" cy="22" r="21" stroke="var(--aqua)" stroke-width="1.5"/>
-            <path d="M22 11.5v21M14 19h16M15 24c0 5 3.2 8 7 8s7-3 7-8" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="10" r="2.4" stroke="var(--gold)" stroke-width="1.6"/>
-          </svg>
-          <span>Arraial Vibe<small>Turismo · Arraial do Cabo</small></span>
+        <a href="#topo" class="brand" aria-label="Arraial Vibe Turismo">
+          <img class="brand-logo" src="assets/brand/logo-branco.svg" alt="" width="132" height="52" loading="lazy">
         </a>
         <p>Passeio de barco em Arraial do Cabo com roteiro completo, embarcação real e atendimento direto pelo WhatsApp.</p>
       </div>
