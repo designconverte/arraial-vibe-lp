@@ -340,10 +340,14 @@ body.has-cursor a,body.has-cursor button,body.has-cursor .gal-item,body.has-curs
 .boat-highlights span{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500;padding:9px 15px;border-radius:100px;border:1px solid var(--line);background:var(--bg-elevated);color:var(--text)}
 .boat-highlights span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqua);flex:none}
 .boat-portrait{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
-.boat-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.boat-portrait img,.boat-portrait video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .boat-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(6,19,31,.6))}
 .boat-portrait .cap{position:absolute;left:22px;bottom:20px;z-index:2;font-size:.82rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:9px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
 .boat-portrait .cap svg{width:16px;height:16px;color:var(--aqua)}
+.boat-portrait.has-video{cursor:pointer}
+.boat-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:66px;height:66px;border-radius:50%;background:rgba(6,19,31,.5);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease);pointer-events:none}
+.boat-portrait:hover .boat-play{transform:translate(-50%,-50%) scale(1.08);background:var(--aqua);color:#03131a}
+.boat-play svg{width:26px;height:26px;margin-left:3px}
 .boat-features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
 @media(min-width:640px){.boat-features{grid-template-columns:repeat(4,1fr)}}
 .feat{background:var(--bg-elevated);border:1px solid var(--line);border-radius:16px;padding:24px 20px;
@@ -355,7 +359,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor .gal-item,body.has-curs
 .boat-microcopy{margin-top:30px;font-size:.86rem;color:var(--faint);display:flex;align-items:flex-start;gap:11px;max-width:78ch}
 .boat-microcopy svg{width:18px;height:18px;color:var(--aqua);flex:none;margin-top:3px}
 .boat-showcase{margin-top:54px;border-radius:24px;overflow:hidden;border:1px solid var(--line);position:relative}
-.boat-showcase img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.boat-showcase img,.boat-showcase video{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center center;display:block}
 .boat-showcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,19,31,.55))}
 .boat-showcase .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#fff;font-weight:600;font-size:1.05rem;text-shadow:0 2px 20px rgba(0,0,0,.5)}
 
@@ -416,7 +420,7 @@ body.has-cursor a,body.has-cursor button,body.has-cursor .gal-item,body.has-curs
 /* lightbox */
 .lightbox{position:fixed;inset:0;z-index:400;background:rgba(3,10,17,.94);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);padding:20px}
 .lightbox.open{opacity:1;pointer-events:auto}
-.lightbox img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 40px 120px -30px #000}
+.lightbox img,.lightbox video{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 40px 120px -30px #000;background:#000}
 .lb-close,.lb-nav{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--line-strong);color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:background .3s var(--ease),transform .3s var(--ease)}
 .lb-close:hover,.lb-nav:hover{background:var(--aqua);color:#03131a;transform:scale(1.05)}
 .lb-close{top:22px;right:22px}
@@ -758,8 +762,11 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
           Itens como Wi-Fi, guia de turismo, fotógrafo, barzinho a bordo e cooler são confirmados pelo WhatsApp de acordo com a data — assim você embarca sabendo exatamente o que esperar.
         </p>
       </div>
-      <figure class="boat-portrait" data-parallax-wrap>
-        <img data-parallax src="assets/img/barco-aereo-deck.jpg" alt="Vista aérea da embarcação Gruta Azul da Arraial Vibe com passageiros a bordo em mar turquesa" loading="lazy">
+      <figure class="boat-portrait has-video" data-parallax-wrap id="boatVideoTrigger" role="button" tabindex="0" aria-label="Assistir ao vídeo da embarcação Gruta Azul">
+        <video data-parallax class="boat-video" data-autoplay-loop autoplay muted loop playsinline preload="metadata" poster="assets/img/poster-embarcacao.jpg">
+          <source src="assets/video/gruta-azul-embarcacao.mp4" type="video/mp4">
+        </video>
+        <span class="boat-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         <span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>A Gruta Azul vista do alto</span>
       </figure>
     </div>
@@ -788,7 +795,9 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
     </div>
 
     <figure class="boat-showcase" data-parallax-wrap>
-      <img data-parallax src="assets/img/barco-navegando.jpg" alt="Embarcação Gruta Azul navegando com passageiros no mar de Arraial do Cabo" loading="lazy">
+      <video data-parallax class="showcase-video" data-autoplay-loop autoplay muted loop playsinline preload="metadata" poster="assets/img/poster-showcase.jpg" aria-label="Vídeo da embarcação Gruta Azul navegando em Arraial do Cabo">
+        <source src="assets/video/gruta-azul-showcase.mp4" type="video/mp4">
+      </video>
       <figcaption class="cap">Gruta Azul · Arraial do Cabo</figcaption>
     </figure>
   </div>
@@ -860,8 +869,8 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
       <div class="gal-item wide" data-full="assets/img/barco-navegando.jpg"><img src="assets/img/barco-navegando.jpg" alt="Embarcação Gruta Azul navegando com passageiros no mar de Arraial do Cabo" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A Gruta Azul navegando por Arraial</span></div>
       <div class="gal-item tall" data-full="assets/img/experiencia-toboaga.jpg"><img src="assets/img/experiencia-toboaga.jpg" alt="Escorregador da embarcação com passageiros no deck superior" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Escorregador e deck superior</span></div>
       <div class="gal-item" data-full="assets/img/barco-proa-cais.jpg"><img src="assets/img/barco-proa-cais.jpg" alt="Proa da embarcação Gruta Azul atracada no cais da Praia dos Anjos" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Embarque na Praia dos Anjos</span></div>
-      <div class="gal-item" data-full="assets/img/a-bordo-mar.jpg"><img src="assets/img/a-bordo-mar.jpg" alt="Vista do mar aberto a bordo da embarcação" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A bordo, com o mar aberto</span></div>
-      <div class="gal-item" data-full="assets/img/barco-lateral.jpg"><img src="assets/img/barco-lateral.jpg" alt="Vista lateral da embarcação Gruta Azul no mar de Arraial" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A embarcação por inteiro</span></div>
+      <div class="gal-item" data-full="assets/img/a-bordo.jpg"><img src="assets/img/a-bordo.jpg" alt="Passageiros relaxando no deck da Gruta Azul com cooler e piso decorado com orca" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A bordo, com o mar aberto</span></div>
+      <div class="gal-item" data-full="assets/img/barco-completo.jpg"><img src="assets/img/barco-completo.jpg" alt="Embarcação Gruta Azul vista de trás com os dois toboáguas, moldura de coração e passageiros" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">A embarcação por inteiro</span></div>
       <div class="gal-item" data-full="assets/img/gruta-azul-detalhe.jpg"><img src="assets/img/gruta-azul-detalhe.jpg" alt="Detalhe da proa da Gruta Azul com passageiros" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Detalhes da Gruta Azul</span></div>
       <div class="gal-item wide" data-full="assets/img/hero-baia-arraial.jpg"><img src="assets/img/hero-baia-arraial.jpg" alt="Vista aérea da baía turquesa de Arraial do Cabo" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">O paraíso visto de cima</span></div>
       <div class="gal-item" data-full="assets/img/grupo-interno.jpg"><img src="assets/img/grupo-interno.jpg" alt="Grupo de passageiros a bordo da embarcação" loading="lazy"><div class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></div><span class="cap">Momentos a bordo</span></div>
@@ -1037,6 +1046,7 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
   <button class="lb-close" id="lbClose" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
   <img id="lbImg" src="" alt="Foto ampliada do passeio da Arraial Vibe">
+  <video id="lbVideo" controls playsinline preload="metadata" style="display:none"></video>
   <button class="lb-nav lb-next" id="lbNext" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
 </div>
 
@@ -1145,21 +1155,41 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-  // ---- Lightbox ----
+  // ---- Lightbox (fotos + vídeo da embarcação) ----
   var items=[].slice.call(document.querySelectorAll('.gal-item'));
-  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg');
-  var idx=0;
-  function openLb(i){ idx=i; lbImg.src=items[i].getAttribute('data-full'); lb.classList.add('open'); document.body.style.overflow='hidden'; pushEvent('view_galeria'); }
-  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
-  function nav(d){ idx=(idx+d+items.length)%items.length; lbImg.src=items[idx].getAttribute('data-full'); }
+  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbVideo=document.getElementById('lbVideo');
+  var lbPrevBtn=document.getElementById('lbPrev'), lbNextBtn=document.getElementById('lbNext');
+  var idx=0, lbMode='img';
+  function openLb(i){ lbMode='img'; idx=i; lbImg.src=items[i].getAttribute('data-full'); lbImg.style.display=''; lbPrevBtn.style.display=''; lbNextBtn.style.display=''; lbVideo.style.display='none'; lb.classList.add('open'); document.body.style.overflow='hidden'; pushEvent('view_galeria'); }
+  function openVideoLb(src){ lbMode='video'; lbImg.style.display='none'; lbPrevBtn.style.display='none'; lbNextBtn.style.display='none'; lbVideo.style.display='block'; lbVideo.src=src; lbVideo.currentTime=0; lb.classList.add('open'); document.body.style.overflow='hidden'; var p=lbVideo.play(); if(p&&p.catch){ p.catch(function(){}); } pushEvent('view_video_embarcacao'); }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; if(lbMode==='video'){ lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.load(); } lbMode='img'; }
+  function nav(d){ if(lbMode!=='img') return; idx=(idx+d+items.length)%items.length; lbImg.src=items[idx].getAttribute('data-full'); }
   items.forEach(function(it,i){ it.addEventListener('click', function(){ openLb(i); }); });
+  var boatTrigger=document.getElementById('boatVideoTrigger');
+  if(boatTrigger){
+    var boatSrcEl=boatTrigger.querySelector('source');
+    var boatSrc=boatSrcEl?boatSrcEl.getAttribute('src'):'';
+    boatTrigger.addEventListener('click', function(){ if(boatSrc) openVideoLb(boatSrc); });
+    boatTrigger.addEventListener('keydown', function(e){ if((e.key==='Enter'||e.key===' ')&&boatSrc){ e.preventDefault(); openVideoLb(boatSrc); } });
+  }
   document.getElementById('lbClose').addEventListener('click', closeLb);
-  document.getElementById('lbPrev').addEventListener('click', function(e){e.stopPropagation();nav(-1);});
-  document.getElementById('lbNext').addEventListener('click', function(e){e.stopPropagation();nav(1);});
+  lbPrevBtn.addEventListener('click', function(e){e.stopPropagation();nav(-1);});
+  lbNextBtn.addEventListener('click', function(e){e.stopPropagation();nav(1);});
   lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
   document.addEventListener('keydown', function(e){
     if(!lb.classList.contains('open')) return;
     if(e.key==='Escape') closeLb(); if(e.key==='ArrowRight') nav(1); if(e.key==='ArrowLeft') nav(-1);
+  });
+
+  // ---- Vídeos inline em loop (autoplay muted + pausa fora da tela) ----
+  [].slice.call(document.querySelectorAll('[data-autoplay-loop]')).forEach(function(v){
+    var tryPlayV=function(){ var p=v.play(); if(p&&p.catch){ p.catch(function(){}); } };
+    v.addEventListener('canplay', tryPlayV); tryPlayV();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ tryPlayV(); } else { v.pause(); } });
+      },{threshold:.1}).observe(v);
+    }
   });
 
   // ---- Section-in-view events (GA4 micro-conversions) ----
