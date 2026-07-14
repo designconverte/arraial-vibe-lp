@@ -542,6 +542,9 @@ footer{background:#040d15;border-top:1px solid var(--line);padding:64px 0 120px}
   .hero-actions{width:100%}
   .hero-actions .btn,.steps-cta .btn,.final .btn{width:100%;white-space:normal;text-align:center;line-height:1.25}
   .btn-lg{padding:16px 22px;font-size:1rem}
+  /* price card: stack cleanly on mobile (divider on top, no fragile side-by-side wrap) */
+  .price-card{flex-direction:column;align-items:flex-start;gap:14px}
+  .price-card .note{width:100%;max-width:none;border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:14px}
 }
 
 /* reduce motion */
